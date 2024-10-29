@@ -4,4 +4,4 @@ Install: `npm i`
 
 Start: `npm run dev`
 
-Demo: `URL: TBD`
+Demo: `https://home-services-pearl.vercel.app/`
