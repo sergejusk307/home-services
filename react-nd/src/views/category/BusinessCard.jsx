@@ -13,16 +13,18 @@ import {
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import { extractColors } from 'extract-colors';
-  
-export default function BusinessCard({ name, logo, category }) {
+import { useLocalStorage } from "usehooks-ts";
+
+export const BusinessCard = ({ name, logo, category }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [dominantColor, setDominantColor] = useState('#ffffff');
 
+  const [favorites, setFavorites] = useLocalStorage("favorites", []);
+
   useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || []; // Without ui-hooks
     setIsFavorite(favorites.includes(name));
-  }, [name]);
-  
+  }, [favorites, name]);
+
   useEffect(() => {
     async function getDominantColor() {
       const colors = await extractColors(logo); // Images don't change often, possible to cache
@@ -34,18 +36,22 @@ export default function BusinessCard({ name, logo, category }) {
     getDominantColor();
   }, [logo]);
 
-  const toggleFavorite = () => {
-    let favorites = new Set(JSON.parse(localStorage.getItem('favorites')) || []);
+  const addFavorite = () => {
+    let newFavorites = new Set(favorites);
+    newFavorites.add(name);
 
-    if (favorites.has(name)) {
-      favorites.delete(name);
-    } else {
-      favorites.add(name);
-    }
-    
-    localStorage.setItem('favorites', JSON.stringify([...favorites]));
-    setIsFavorite(!isFavorite);
-  };
+    setFavorites([...newFavorites]);
+    setIsFavorite(true);
+  }
+
+  const removeFavorite = () => {
+    const newFavorites = new Set(favorites);
+    newFavorites.delete(name);
+    setFavorites([...newFavorites]);
+    setIsFavorite(false);
+  }
+
+  const toggleFavorite = isFavorite ? removeFavorite : addFavorite;
 
   return (
     <Center py={12}>
@@ -118,4 +124,3 @@ export default function BusinessCard({ name, logo, category }) {
     </Center>
   );
 }
-  

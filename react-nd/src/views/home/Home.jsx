@@ -1,5 +1,4 @@
-import HomeHero from "@/views/home/HomeHero";
-import CategoryList from "@/views/home/CategoryList";
+import { CategoryList, HomeHero } from "@/views/home";
 
 const Home = () => {
   return (

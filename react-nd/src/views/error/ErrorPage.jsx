@@ -1,5 +1,5 @@
 import { Box, Container, Text, Heading, Link } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom"; 
+import { Link as RouterLink } from "react-router-dom";
 import { keyframes } from "@emotion/react";
 
 const shadowAnimation = keyframes`
@@ -36,9 +36,9 @@ const UfoAnimation = () => {
             fill="hsl(230, 7%, 23%)"
           />
         </g>
-  
-        <Box 
-          as="g" 
+
+        <Box
+          as="g"
           id="i-fof-browser"
           animation={`${shadowAnimation} 4s infinite`}
           transformOrigin="282px 410px">
@@ -109,7 +109,7 @@ const UfoAnimation = () => {
           ry="28"
           fill="hsl(170, 78%, 36%)"
         />
-        
+
         <Box
           id="i-fof-shadow"
           as="ellipse"
@@ -135,7 +135,7 @@ const UfoAnimation = () => {
   );
 };
 
-const ErrorPage = () => {
+export const ErrorPage = () => {
   return (
     <Box bg="white" color="gray.700" py="4.5rem" textAlign="center">
       <Container maxW="md">
@@ -162,5 +162,3 @@ const ErrorPage = () => {
     </Box>
   );
 };
-
-export default ErrorPage;
