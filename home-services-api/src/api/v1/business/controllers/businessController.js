@@ -1,62 +1,56 @@
-import businessService from '#src/api/v1/business/services/businessService.js';
+import businessService from '#api/business/services/businessService.js';
 
-const getAllBusinesses = async (req, res) => {
+const getAllBusinesses = async(req, res, next) => {
     try {
         const businesses = await businessService.getAllBusinesses();
-        res.json(businesses);
+        res.success(businesses);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        next(error);
     }
 };
 
-const getBusinessesByCategory = async (req, res) => {
+const getBusinessesByCategory = async(req, res, next) => {
     try {
         const businesses = await businessService.getBusinessesByCategory(req.params.category);
-        res.json(businesses);
+        res.success(businesses);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        next(error);
     }
 };
 
-const getBusinessById = async (req, res) => {
+const getBusinessById = async(req, res, next) => {
     try {
         const business = await businessService.getBusinessById(req.params.id);
-        if (!business) {
-            return res.status(404).json({ message: 'Business not found' });
-        }
-        res.json(business);
+        res.success(business);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        next(error);
     }
 };
 
-const createBusiness = async (req, res) => {
+const createBusiness = async(req, res, next) => {
     try {
         const business = await businessService.createBusiness(req.body);
-        res.status(201).json(business);
+        res.created(business);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        next(error);
     }
 };
 
-const updateBusiness = async (req, res) => {
+const updateBusiness = async(req, res, next) => {
     try {
         const updatedBusiness = await businessService.updateBusiness(req.params.id, req.body);
-        if (!updatedBusiness) {
-            return res.status(404).json({ message: 'Business not found' });
-        }
-        res.json(updatedBusiness);
+        res.success(updatedBusiness);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        next(error);
     }
 };
 
-const getBookingsByBusinessAndDate = async (req, res) => {
+const getBookingsByBusinessAndDate = async(req, res, next) => {
     try {
         const bookings = await businessService.getBookingsByBusinessAndDate(req.params.businessId, req.params.date);
-        res.json(bookings);
+        res.success(bookings);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        next(error);
     }
 };
 

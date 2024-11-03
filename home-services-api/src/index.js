@@ -1,34 +1,40 @@
 import express from 'express';
-import swaggerjsdoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
 import morgan from 'morgan';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-import categoriesRouter from '#src/api/v1/routes/categoryRoutes.js';
-import businessRouter from '#src/api/v1/routes/businessRoutes.js';
-import bookingRouter from '#src/api/v1/routes/bookingRoutes.js';
+import swaggerDocs from '../docs/swagger.json' with { type: "json" };
 
-import swaggerOptions from '#src/docs/swaggerOptions.js';
+import router from '#src/routes.js';
+
 import connectToDb from '#src/config/db.js';
+
+import responseFormat from '#src/middleware/responseFormat.js';
+import errorHandler from '#src/middleware/errorHandler.js';
 
 dotenv.config();
 
 const app = express();
-const swaggerDocs = swaggerjsdoc(swaggerOptions)
 
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 
-app.use('/api/v1/categories', categoriesRouter);
-app.use('/api/v1/business', businessRouter);
-app.use('/api/v1/booking', bookingRouter);
+app.use(responseFormat);
 
+app.use(router);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
-connectToDb().then(() => {
-  app.listen(process.env.API_PORT, () => {
-    console.log(`Server is running on ${process.env.API_PROTOCOL}://${process.env.API_HOST}:${process.env.API_PORT}`);
+app.use(errorHandler);
+
+connectToDb()
+  .then(() => {
+    app.listen(process.env.API_PORT, () => {
+      console.log(`Server is running on ${process.env.API_PROTOCOL}://${process.env.API_HOST}:${process.env.API_PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error('Error connecting to the database:', error);
+    process.exit(1);
   });
-});

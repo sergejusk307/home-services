@@ -1,27 +1,19 @@
-import categoryService from '#src/api/v1/categories/services/categoryService.js';
+import categoryService from '#api/categories/services/categoryService.js';
 
-export const getCategories = async (req, res) => {
+export const getCategories = async(req, res, next) => {
     try {
         const categories = await categoryService.getCategories();
-        res.status(200).json({ categories });
+        res.success(categories);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        next(error);
     }
 };
 
-export const createCategory = async (req, res) => {
+export const createCategory = async(req, res, next) => {
     try {
-        const { name, description } = req.body;
-
-        let { image } = req.body;
-        if (!image) {
-            const lock = Math.floor(Math.random() * 100000) + 1;
-            image = `https://loremflickr.com/320/240/${name.replace(/\s/g, ',')}?lock=${lock}`;
-        }
-        
-        const newCategory = await categoryService.createCategory({ name, description, image });
-        res.status(201).json({ newCategory });
+        const newCategory = await categoryService.createCategory(req.body);
+        res.created(newCategory);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        next(error);
     }
 };

@@ -1,20 +1,17 @@
-import CategoryModel from '#src/api/v1/models/categoryModel.js';
+import CategoryModel from '#api/models/categoryModel.js';
 
-const getCategories = async () => {
-    try {
-        return await CategoryModel.find({});
-    } catch (error) {
-        throw new Error('Error fetching categories: ' + error.message);
-    }
+const getCategories = async() => {
+    return await CategoryModel.find({});
 };
 
-const createCategory = async (data) => {
-    try {
-        const newCategory = new CategoryModel(data);
-        return await newCategory.save();
-    } catch (error) {
-        throw new Error('Error creating category: ' + error.message);
-    }
+const createCategory = async(data) => {
+    const { name, description, image: providedImage } = data;
+
+    const image = providedImage || `https://loremflickr.com/320/240/${name.replace(/\s/g, ',')}?lock=${Math.floor(Math.random() * 100000) + 1}`;
+
+    const newCategory = new CategoryModel({ name, description, image });
+
+    return await newCategory.save();
 };
 
 // Delete

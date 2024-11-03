@@ -1,22 +1,26 @@
-import bookingService from '#src/api/v1/booking/services/bookingService.js';
+import bookingService from '#api/booking/services/bookingService.js';
 
 const bookingController = {
-    async getBookingsByUserEmail(req, res) {
+    async getBookingsByUserEmail(req, res, next) {
         const { email } = req.params;
         try {
+            // TODO: check if user exists
             const bookings = await bookingService.getBookingsByUserEmail(email);
-            res.status(200).json(bookings);
+
+            res.success(bookings);
         } catch (error) {
-            res.status(500).json({ error: 'Internal server error' });
+            next(error);
         }
     },
 
-    async createBooking(req, res) {
+    async createBooking(req, res, next) {
         try {
+            // TODO: check if user exists
             const booking = await bookingService.createBooking(req.body);
-            res.status(201).json(booking);
+
+            res.created(booking);
         } catch (error) {
-            res.status(400).json({ error: error.message });
+            next(error);
         }
     },
 
@@ -24,9 +28,10 @@ const bookingController = {
         const { id } = req.params;
         try {
             await bookingService.deleteBooking(id);
-            res.status(204).send();
+
+            res.deleted();
         } catch (error) {
-            res.status(404).json({ error: error.message });
+            next(error);
         }
     },
 };

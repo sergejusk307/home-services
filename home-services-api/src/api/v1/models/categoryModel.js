@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-import baseSchema from '#src/api/v1/models/baseSchema.js';
+import baseSchema from '#api/models/baseSchema.js';
 
 const CategorySchema = new mongoose.Schema({
   name: {
