@@ -1,6 +1,6 @@
 import categoryService from '#api/categories/services/categoryService.js';
 
-export const getCategories = async(req, res, next) => {
+const getCategories = async(req, res, next) => {
     try {
         const categories = await categoryService.getCategories();
         res.success(categories);
@@ -9,11 +9,16 @@ export const getCategories = async(req, res, next) => {
     }
 };
 
-export const createCategory = async(req, res, next) => {
+const createCategory = async(req, res, next) => {
     try {
         const newCategory = await categoryService.createCategory(req.body);
         res.created(newCategory);
     } catch (error) {
         next(error);
     }
+};
+
+export default {
+    getCategories,
+    createCategory
 };

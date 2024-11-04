@@ -1,10 +1,10 @@
 import express from 'express';
-import {getCategories, createCategory} from '#src/api/v1/categories/controllers/categoryController.js';
+import categoryController from '#src/api/v1/categories/controllers/categoryController.js';
 
 const router = express.Router();
 
-router.get('/', getCategories
-  /* #swagger.responses[200] = {
+router.get('/', categoryController.getCategories
+    /* #swagger.responses[200] = {
     description: "Successful Response",
     content: {
         "application/json": {
@@ -32,6 +32,6 @@ router.get('/', getCategories
 } */
 );
 
-router.post('/', createCategory);
+router.post('/', categoryController.createCategory);
 
 export default router;

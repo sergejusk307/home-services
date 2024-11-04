@@ -18,6 +18,6 @@ const createCategory = async(data) => {
 // Update
 
 export default {
-    createCategory,
     getCategories,
+    createCategory,
 };

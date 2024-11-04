@@ -4,7 +4,6 @@ import BookingModel from '#api/models/bookingModel.js';
 import HttpException from '#src/exceptions/HttpException.js';
 import { HTTP_RESPONSE_CODE } from '#const/global.js';
 
-
 const createBusiness = async(data) => {
     const business = new BusinessModel(data);
     return await business.save();

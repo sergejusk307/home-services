@@ -16,4 +16,7 @@
 
 ## API Documentation
 
+Generate documentation by running `npm run swagger`.
+
 The API documentation is available at `/api-docs`. 
+
