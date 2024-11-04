@@ -14,8 +14,6 @@ export const CategoryMain = ({ service, businessList }) => {
     return null;
   }
 
-  console.log(service);
-
   return (
     < Box flex="1" p={8} >
       <Stack spacing={6}>

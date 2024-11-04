@@ -18,7 +18,7 @@ import {
 
 import { UserContext } from '@/context/UserContext';
 
-export default function Login() {
+export const Login = () => {
   const navigate = useNavigate();
   const { user, login } = useContext(UserContext);
 
@@ -61,38 +61,42 @@ export default function Login() {
           <Text fontSize="lg" color={'gray.500'}>
             Sign in to your account to enjoy all our features.
           </Text>
-          <FormControl id="username" isInvalid={errors.username}>
-            <FormLabel>Username</FormLabel>
-            <Input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            {errors.username && <FormErrorMessage>{errors.username}</FormErrorMessage>}
-          </FormControl>
-          <FormControl id="password" isInvalid={errors.password}>
-            <FormLabel>Password</FormLabel>
-            <Input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {errors.password && <FormErrorMessage>{errors.password}</FormErrorMessage>}
-          </FormControl>
-          <Stack spacing={6}>
-            <Stack
-              direction={{ base: 'column', sm: 'row' }}
-              align={'start'}
-              justify={'space-between'}>
-              <Checkbox borderColor={'primary.500'} colorScheme={'purple'}>Remember me</Checkbox>
-              <Link color={'primary.500'}>Forgot password?</Link>
-            </Stack>
-            <Button colorScheme={'purple'} variant={'solid'} onClick={handleSubmit}>
+          <form>
+            <FormControl id="username" isInvalid={errors.username}>
+              <FormLabel>Username</FormLabel>
+              <Input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                autoComplete="on"
+              />
+              {errors.username && <FormErrorMessage>{errors.username}</FormErrorMessage>}
+            </FormControl>
+            <FormControl id="password" isInvalid={errors.password}>
+              <FormLabel>Password</FormLabel>
+              <Input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                autoComplete="on"
+              />
+              {errors.password && <FormErrorMessage>{errors.password}</FormErrorMessage>}
+            </FormControl>
+            <Stack spacing={6}>
+              <Stack
+                direction={{ base: 'column', sm: 'row' }}
+                align={'start'}
+                justify={'space-between'}>
+                <Checkbox borderColor={'primary.500'} colorScheme={'purple'}>Remember me</Checkbox>
+                <Link color={'primary.500'}>Forgot password?</Link>
+              </Stack>
+              <Button colorScheme={'purple'} variant={'solid'} onClick={handleSubmit}>
                 Sign in
-            </Button>
-          </Stack>
+              </Button>
+            </Stack>
+          </form>
         </Stack>
-      </Flex>
+      </Flex >
       <Flex flex={1}>
         <Image
           alt={'Login Image'}
@@ -100,6 +104,6 @@ export default function Login() {
           src={'/images/home-hero-details.png'}
         />
       </Flex>
-    </Stack>
+    </Stack >
   )
 }

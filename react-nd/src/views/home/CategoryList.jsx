@@ -1,5 +1,5 @@
 import { Box, SimpleGrid } from '@chakra-ui/react';
-import { services } from "@/consts/services";
+import { services } from "@/consts/Services";
 import { ServiceCard } from "@/views/home";
 
 export const CategoryList = () => {

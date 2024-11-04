@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import DefaultLayout from '@/layout/DefaultLayout';
+import { DefaultLayout } from '@/layout/DefaultLayout';
 import { ErrorPage } from "@/views/error";
 
 import { ROUTES } from "@/consts/Routes";

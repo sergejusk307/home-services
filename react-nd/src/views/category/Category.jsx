@@ -1,5 +1,5 @@
-import { businesses } from "@/consts/businesses";
-import { services } from "@/consts/services";
+import { businesses } from "@/consts/Businesses";
+import { services } from "@/consts/Services";
 import { CategoryMain, CategorySidebar } from "@/views/category";
 import { ErrorPage } from "@/views/error";
 import {
@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 
-const Category = () => {
+export const Category = () => {
   const { category: categoryParam } = useParams();
 
   const category = categoryParam || services[0].name;
@@ -26,6 +26,3 @@ const Category = () => {
     </Flex>
   );
 };
-
-export default Category;
-
