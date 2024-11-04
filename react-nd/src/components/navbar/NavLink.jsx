@@ -1,12 +1,16 @@
 import { Box, Text } from '@chakra-ui/react';
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
-const NavLink = (props) => {
+export const NavLink = (props) => {
   const { children } = props;
   const { route } = props;
 
+  const navigate = useNavigate();
+
   return (
     <Box
-      as="a"
+      as={RouterLink}
+      to={route.path}
       px={2}
       py={1}
       rounded={'md'}
@@ -16,7 +20,7 @@ const NavLink = (props) => {
         bg: 'primary.500',
         color: 'white'
       }}
-      href={route.path}>
+    >
       <Text fontSize="1.2rem" fontWeight="bold">
         {route.name}
       </Text>
@@ -24,5 +28,3 @@ const NavLink = (props) => {
     </Box>
   )
 }
-
-export default NavLink;

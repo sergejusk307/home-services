@@ -1,10 +1,11 @@
-import Logo from "@/components/common/Logo";
-import NavLink from "@/components/navbar/NavLink";
-import { Avatar, Box, Button, Flex, HStack, Link, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Stack, Text } from "@chakra-ui/react";
-import { useAuth } from "@/context/UserContext";
+import { Logo } from "@/components/common/Logo";
+import { NavLink } from "@/components/navbar/NavLink";
 import { ROUTES } from "@/consts/Routes";
+import { useAuth } from "@/context/UserContext";
+import { Avatar, Box, Button, Flex, HStack, Link, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Stack, Text } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 
-const Links = [
+const links = [
   ROUTES.HOME,
   ROUTES.SERVICES,
   ROUTES.ABOUT,
@@ -16,24 +17,27 @@ export const MenuLinks = ({ isOpen }) => {
   return (
     <>
       <HStack spacing={20} alignItems={'center'}>
-        <Link href="/">
+        <Link
+          as={RouterLink}
+          to={"/"}>
           <Logo
             w="100px"
             color={["white", "white", "primary.500", "primary.500"]}
           />
         </Link>
         <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
-          {Links.map((link) => (
+          {links.map((link) => (
             <NavLink route={link} key={link.name} />
           ))}
         </HStack>
       </HStack>
 
-
       <Flex alignItems={'center'}>
         <Menu>
           {!user ? (
-            <Link href="/login">
+            <Link
+              as={RouterLink}
+              to={ROUTES.LOGIN.path}>
               <Button
                 size="md"
                 rounded="md"
@@ -82,7 +86,7 @@ export const MenuLinks = ({ isOpen }) => {
       {isOpen ? (
         <Box pb={4} display={{ md: 'none' }}>
           <Stack as={'nav'} spacing={4}>
-            {Links.map((link) => (
+            {links.map((link) => (
               <NavLink route={link} key={link.name} />
             ))}
           </Stack>

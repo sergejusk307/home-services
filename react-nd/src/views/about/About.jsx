@@ -1,13 +1,11 @@
 import { Box, Heading } from '@chakra-ui/react';
 
-const About = () => {
+export const About = () => {
   return (
     <>
       <Box p={5}>
-        <Heading>Welcome to About</Heading> 
+        <Heading>Welcome to About</Heading>
       </Box>
     </>
   );
 };
-
-export default About;

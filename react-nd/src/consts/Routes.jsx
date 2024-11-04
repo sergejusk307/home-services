@@ -1,7 +1,7 @@
-import Home from '@/views/home/Home';
-import About from '@/views/about/About';
-import Category from '@/views/category/Category';
-import Login from '@/views/login/Login';
+import { Home } from '@/views/home/Home';
+import { About } from '@/views/about/About';
+import { Category } from '@/views/category/Category';
+import { Login } from '@/views/login/Login';
 
 export const ROUTES = {
   HOME: {
@@ -28,6 +28,11 @@ export const ROUTES = {
     name: "Login",
     path: "/login",
     element: <Login />,
+  },
+  CONTACT: {
+    name: "Contact",
+    path: "/contact",
+    element: null, //TODO
   },
   servicePage: (serviceName) => `/search/${serviceName}`,
   getAllRoutes: function () {

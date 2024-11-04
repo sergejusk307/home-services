@@ -10,5 +10,3 @@ export const Topbar = (props) => {
     </NavBarContainer>
   );
 };
-
-export default Topbar;

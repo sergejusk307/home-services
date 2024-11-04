@@ -1,6 +1,6 @@
 import { Box, Heading, Icon, VStack, Link, Text } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
-import { services } from "@/consts/services";
+import { services } from "@/consts/Services";
 import { ROUTES } from "@/consts/Routes";
 
 export const CategorySidebar = ({ service }) => {

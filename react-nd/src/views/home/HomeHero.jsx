@@ -5,7 +5,7 @@ import {
   Text
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import { services } from "@/consts/services";
+import { services } from "@/consts/Services";
 import { SearchBar } from "@/views/home";
 
 export const HomeHero = () => {

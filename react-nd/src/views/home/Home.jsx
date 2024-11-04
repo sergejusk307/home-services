@@ -1,6 +1,6 @@
 import { CategoryList, HomeHero } from "@/views/home";
 
-const Home = () => {
+export const Home = () => {
   return (
     <>
       <HomeHero />
@@ -8,5 +8,3 @@ const Home = () => {
     </>
   );
 };
-
-export default Home;
