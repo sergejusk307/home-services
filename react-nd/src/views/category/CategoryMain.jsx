@@ -1,0 +1,40 @@
+import { BusinessCard } from "@/views/category";
+import {
+  Box, Flex, Heading,
+  Icon,
+  Stack
+} from "@chakra-ui/react";
+
+export const CategoryMain = ({ service, businessList }) => {
+  if (!service) {
+    return null;
+  }
+
+  if (!businessList) {
+    return null;
+  }
+
+  return (
+    < Box flex="1" p={8} >
+      <Stack spacing={6}>
+        <Heading size="lg" color={service.color}>
+          <Icon as={service.icon} mr={2} />
+          {service.name.charAt(0).toUpperCase() + service.name.slice(1)} Services
+        </Heading>
+
+        <Box p={8}>
+          <Flex wrap="wrap" gap={6}>
+            {businessList.map((business) => (
+              <BusinessCard
+                key={business.name}
+                name={business.name}
+                logo={business.logo}
+                category={service.name.charAt(0).toUpperCase() + service.name.slice(1)}
+              />
+            ))}
+          </Flex>
+        </Box>
+      </Stack>
+    </Box >
+  )
+}
