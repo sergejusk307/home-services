@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "#src": ["src"],
+      "#api": ["src/api/v1"],
+      "#const": ["src/const"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

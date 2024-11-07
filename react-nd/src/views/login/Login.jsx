@@ -13,8 +13,8 @@ import {
   Stack,
   Image,
   Link,
-  FormErrorMessage
-} from '@chakra-ui/react'
+  FormErrorMessage,
+} from '@chakra-ui/react';
 
 import { UserContext } from '@/context/UserContext';
 
@@ -86,8 +86,11 @@ export const Login = () => {
               <Stack
                 direction={{ base: 'column', sm: 'row' }}
                 align={'start'}
-                justify={'space-between'}>
-                <Checkbox borderColor={'primary.500'} colorScheme={'purple'}>Remember me</Checkbox>
+                justify={'space-between'}
+              >
+                <Checkbox borderColor={'primary.500'} colorScheme={'purple'}>
+                  Remember me
+                </Checkbox>
                 <Link color={'primary.500'}>Forgot password?</Link>
               </Stack>
               <Button colorScheme={'purple'} variant={'solid'} onClick={handleSubmit}>
@@ -96,14 +99,10 @@ export const Login = () => {
             </Stack>
           </form>
         </Stack>
-      </Flex >
-      <Flex flex={1}>
-        <Image
-          alt={'Login Image'}
-          objectFit={'cover'}
-          src={'/images/home-hero-details.png'}
-        />
       </Flex>
-    </Stack >
-  )
-}
+      <Flex flex={1}>
+        <Image alt={'Login Image'} objectFit={'cover'} src={'/images/home-hero-details.png'} />
+      </Flex>
+    </Stack>
+  );
+};

@@ -1,7 +1,7 @@
-import { Box, Container, Text, Heading, Link } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom";
-import { UfoAnimation } from "@/views/error";
-import { ROUTES } from "@/consts/Routes";
+import { Box, Container, Text, Heading, Link } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
+import { UfoAnimation } from '@/views/error';
+import { ROUTES } from '@/consts/Routes';
 
 export const ErrorPage = () => {
   return (

@@ -1,11 +1,9 @@
-import { businesses } from "@/consts/Businesses";
-import { services } from "@/consts/Services";
-import { CategoryMain, CategorySidebar } from "@/views/category";
-import { ErrorPage } from "@/views/error";
-import {
-  Flex
-} from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
+import { businesses } from '@/consts/Businesses';
+import { services } from '@/consts/Services';
+import { CategoryMain, CategorySidebar } from '@/views/category';
+import { ErrorPage } from '@/views/error';
+import { Flex } from '@chakra-ui/react';
+import { useParams } from 'react-router-dom';
 
 export const Category = () => {
   const { category: categoryParam } = useParams();

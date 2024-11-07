@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex } from '@chakra-ui/react';
 
 export const NavBarContainer = ({ children, ...props }) => {
   return (
@@ -16,9 +16,9 @@ export const NavBarContainer = ({ children, ...props }) => {
       p={4}
       paddingLeft={20}
       paddingRight={20}
-      bg={["primary.500", "primary.500", "transparent", "transparent"]}
+      bg={['primary.500', 'primary.500', 'transparent', 'transparent']}
       borderBottom="2px solid #f1f1f1;"
-      color={["white", "white", "primary.700", "primary.700"]}
+      color={['white', 'white', 'primary.700', 'primary.700']}
       {...props}
     >
       {children}

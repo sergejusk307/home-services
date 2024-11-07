@@ -1,5 +1,5 @@
 import { Box, Heading } from '@chakra-ui/react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 export const ServiceCard = ({ service }) => {
   const navigate = useNavigate();
@@ -22,8 +22,8 @@ export const ServiceCard = ({ service }) => {
       bg="primary.100"
       gap="1rem"
       _hover={{
-        bg: "primary.200",
-        cursor: "pointer",
+        bg: 'primary.200',
+        cursor: 'pointer',
       }}
       onClick={handleClick}
     >

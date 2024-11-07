@@ -1,9 +1,5 @@
-import { BusinessCard } from "@/views/category";
-import {
-  Box, Flex, Heading,
-  Icon,
-  Stack
-} from "@chakra-ui/react";
+import { BusinessCard } from '@/views/category';
+import { Box, Flex, Heading, Icon, Stack } from '@chakra-ui/react';
 
 export const CategoryMain = ({ service, businessList }) => {
   if (!service) {
@@ -15,7 +11,7 @@ export const CategoryMain = ({ service, businessList }) => {
   }
 
   return (
-    < Box flex="1" p={8} >
+    <Box flex="1" p={8}>
       <Stack spacing={6}>
         <Heading size="lg" color={service.color}>
           <Icon as={service.icon} mr={2} />
@@ -35,6 +31,6 @@ export const CategoryMain = ({ service, businessList }) => {
           </Flex>
         </Box>
       </Stack>
-    </Box >
-  )
-}
+    </Box>
+  );
+};
