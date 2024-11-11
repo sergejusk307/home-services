@@ -15,7 +15,13 @@ import { useState, useEffect } from 'react';
 import { extractColors } from 'extract-colors';
 import { useLocalStorage } from 'usehooks-ts';
 
-export const BusinessCard = ({ name, logo, category }) => {
+type BusinessCardProps = {
+  name: string;
+  logo: string;
+  category: string;
+};
+
+export const BusinessCard = ({ name, logo, category }: BusinessCardProps) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [dominantColor, setDominantColor] = useState('#ffffff');
 
