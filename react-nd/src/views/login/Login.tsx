@@ -18,16 +18,18 @@ import {
 
 import { UserContext } from '@/context/UserContext';
 
+type Errors = { username?: string; password?: string };
+
 export const Login = () => {
   const navigate = useNavigate();
   const { user, login } = useContext(UserContext);
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<Errors>({});
 
   const validate = () => {
-    let errors = {};
+    let errors: Errors = {};
     if (!username) errors.username = 'Username is required';
     if (!password) errors.password = 'Password is required';
     return errors;
@@ -62,7 +64,7 @@ export const Login = () => {
             Sign in to your account to enjoy all our features.
           </Text>
           <form>
-            <FormControl id="username" isInvalid={errors.username}>
+            <FormControl id="username" isInvalid={!!errors.username}>
               <FormLabel>Username</FormLabel>
               <Input
                 type="text"
@@ -72,7 +74,7 @@ export const Login = () => {
               />
               {errors.username && <FormErrorMessage>{errors.username}</FormErrorMessage>}
             </FormControl>
-            <FormControl id="password" isInvalid={errors.password}>
+            <FormControl id="password" isInvalid={!!errors.password}>
               <FormLabel>Password</FormLabel>
               <Input
                 type="password"

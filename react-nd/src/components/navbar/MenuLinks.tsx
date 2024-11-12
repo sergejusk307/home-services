@@ -21,7 +21,11 @@ import { Link as RouterLink } from 'react-router-dom';
 
 const links = [ROUTES.HOME, ROUTES.SERVICES, ROUTES.ABOUT];
 
-export const MenuLinks = ({ isOpen }) => {
+type MenuLinksProps = {
+  isOpen: boolean;
+};
+
+export const MenuLinks = ({ isOpen }: MenuLinksProps) => {
   const { user, logout } = useAuth();
 
   return (
@@ -64,7 +68,7 @@ export const MenuLinks = ({ isOpen }) => {
                     }
                   />
                   <Text as="p" marginTop="2" color="primary.700" fontSize="lg">
-                    {user}
+                    {user.username}
                   </Text>
                 </HStack>
               </MenuButton>

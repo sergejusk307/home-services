@@ -1,7 +1,15 @@
 import { BusinessCard } from '@/views/category';
 import { Box, Flex, Heading, Icon, Stack } from '@chakra-ui/react';
 
-export const CategoryMain = ({ service, businessList }) => {
+import { ServiceType } from '@/type/serviceType';
+import { BusinessType, BusinessesType } from '@/type/businessType';
+
+type CategoryMainProps = {
+  service: ServiceType;
+  businessList: BusinessesType;
+};
+
+export const CategoryMain = ({ service, businessList }: CategoryMainProps) => {
   if (!service) {
     return null;
   }
@@ -20,7 +28,7 @@ export const CategoryMain = ({ service, businessList }) => {
 
         <Box p={8}>
           <Flex wrap="wrap" gap={6}>
-            {businessList.map((business) => (
+            {businessList[service.name].map((business: BusinessType) => (
               <BusinessCard
                 key={business.name}
                 name={business.name}

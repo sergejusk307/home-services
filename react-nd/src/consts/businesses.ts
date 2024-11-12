@@ -1,4 +1,6 @@
-export const businesses = {
+import { BusinessesType } from '@/type/businessType';
+
+export const businesses: BusinessesType = {
   cleaning: [
     { name: 'Sparkling Clean', logo: '/images/sparkling-clean-logo.jpg' },
     { name: 'Shine & Polish', logo: '/images/pink.jpg' },

@@ -1,5 +1,6 @@
-import { businesses } from '@/consts/Businesses';
-import { services } from '@/consts/Services';
+import { businesses } from '@/consts/businesses';
+import { BusinessesType } from '@/type/businessType';
+import { services } from '@/consts/services';
 import { CategoryMain, CategorySidebar } from '@/views/category';
 import { ErrorPage } from '@/views/error';
 import { Flex } from '@chakra-ui/react';
@@ -15,7 +16,11 @@ export const Category = () => {
     return <ErrorPage />;
   }
 
-  const businessList = businesses[category] || [];
+  if (!service) {
+    return <ErrorPage />;
+  }
+
+  const businessList: BusinessesType = businesses[category] || {};
 
   return (
     <Flex>

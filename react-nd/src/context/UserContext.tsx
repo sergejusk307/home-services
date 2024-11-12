@@ -1,17 +1,29 @@
 import { createContext, useContext } from 'react';
+import { PropsWithChildren } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
+import { User } from '@/components/user/types';
 
-const UserContext = createContext();
+interface UserContextValue {
+  user: User | null;
+  login: (user: User) => void;
+  logout: () => void;
+}
+
+const UserContext = createContext<UserContextValue>({
+  user: null,
+  login: () => {},
+  logout: () => {},
+});
 
 export const useAuth = () => useContext(UserContext);
 
-const UserProvider = ({ children }) => {
-  const [user, setUser] = useLocalStorage('user', null);
+const UserProvider = ({ children }: PropsWithChildren) => {
+  const [user, setUser] = useLocalStorage<User | null>('user', null);
 
-  const login = (userInfo) => {
-    if (!userInfo) return;
+  const login = (user: User) => {
+    if (!user) return;
 
-    setUser(userInfo.username);
+    setUser(user);
   };
 
   const logout = () => {

@@ -34,8 +34,8 @@ export const ROUTES = {
     path: '/contact',
     element: null, //TODO
   },
-  servicePage: (serviceName) => `/search/${serviceName}`,
-  getAllRoutes: function () {
+  servicePage: (serviceName: string) => `/search/${serviceName}`,
+  getAllRoutes: function (this: Record<string, { path?: string }>) {
     return Object.values(this).filter((route) => typeof route === 'object' && route.path);
   },
 };

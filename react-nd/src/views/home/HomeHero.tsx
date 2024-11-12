@@ -1,7 +1,9 @@
 import { Container, Heading, Stack, Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import { services } from '@/consts/Services';
+import { services } from '@/consts/services';
 import { SearchBar } from '@/views/home';
+import { ServiceCard } from '@/components/service/ServiceCard';
+import { ServiceType } from '@/type/serviceType';
 
 export const HomeHero = () => {
   const navigate = useNavigate();

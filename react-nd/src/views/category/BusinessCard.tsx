@@ -25,7 +25,7 @@ export const BusinessCard = ({ name, logo, category }: BusinessCardProps) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [dominantColor, setDominantColor] = useState('#ffffff');
 
-  const [favorites, setFavorites] = useLocalStorage('favorites', []);
+  const [favorites, setFavorites] = useLocalStorage<string[]>('favorites', []);
 
   useEffect(() => {
     setIsFavorite(favorites.includes(name));

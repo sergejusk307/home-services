@@ -1,7 +1,8 @@
 import { Box, Heading } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
+import { ServiceType } from '@/type/serviceType';
 
-export const ServiceCard = ({ service }) => {
+export const ServiceCard = ({ service }: { service: ServiceType }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -27,7 +28,7 @@ export const ServiceCard = ({ service }) => {
       }}
       onClick={handleClick}
     >
-      <service.icon fontSize={48} color={service.color} w={10} h={10} mb={4} />
+      <service.icon fontSize={48} color={service.color} width={10} height={10} />
       <Heading textTransform="capitalize" size="md" mb={2}>
         {service.name}
       </Heading>

@@ -1,7 +1,8 @@
 import { FaScrewdriverWrench, FaTruck, FaBrush, FaBucket, FaLightbulb } from 'react-icons/fa6';
 import { PiPipeFill } from 'react-icons/pi';
+import { ServiceType } from '@/type/serviceType';
 
-export const services = [
+export const services: ServiceType[] = [
   { name: 'cleaning', icon: FaBucket, color: '#b12fde' },
   { name: 'repair', icon: FaScrewdriverWrench, color: '#ecbb3a' },
   { name: 'painting', icon: FaBrush, color: '#e23e40' },

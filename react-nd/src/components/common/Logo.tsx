@@ -1,6 +1,6 @@
 import { Box, Text } from '@chakra-ui/react';
 
-export const Logo = (props) => {
+export const Logo = (props: React.ComponentProps<typeof Box>) => {
   return (
     <Box {...props}>
       <Text fontSize="lg" fontWeight="bold">

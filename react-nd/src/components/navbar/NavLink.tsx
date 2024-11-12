@@ -1,7 +1,15 @@
 import { Box, Text } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 
-export const NavLink = (props) => {
+type NavLinkProps = {
+  children?: React.ReactNode;
+  route: {
+    path: string;
+    name: string;
+  };
+};
+
+export const NavLink = (props: NavLinkProps) => {
   const { children } = props;
   const { route } = props;
 

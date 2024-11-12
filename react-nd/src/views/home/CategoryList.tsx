@@ -1,6 +1,6 @@
 import { Box, SimpleGrid } from '@chakra-ui/react';
-import { services } from '@/consts/Services';
-import { ServiceCard } from '@/views/home';
+import { services } from '@/consts/services';
+import { ServiceCard } from '@/components/service/ServiceCard';
 
 export const CategoryList = () => {
   return (
@@ -20,7 +20,7 @@ export const CategoryList = () => {
           }}
         >
           {services.map((service, index) => (
-            <ServiceCard key={index} service={service} width={{ base: '90%', md: 'auto' }} />
+            <ServiceCard key={index} service={service} />
           ))}
         </SimpleGrid>
       </Box>
