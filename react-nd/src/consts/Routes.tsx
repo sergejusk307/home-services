@@ -2,8 +2,9 @@ import { Home } from '@/views/home/Home';
 import { About } from '@/views/about/About';
 import { Category } from '@/views/category/Category';
 import { Login } from '@/views/login/Login';
+import { RouteType } from '@/type/routeType';
 
-export const ROUTES = {
+export const ROUTES: Record<string, RouteType> = {
   HOME: {
     name: 'Home',
     path: '/',
@@ -32,10 +33,13 @@ export const ROUTES = {
   CONTACT: {
     name: 'Contact',
     path: '/contact',
-    element: null, //TODO
-  },
-  servicePage: (serviceName: string) => `/search/${serviceName}`,
-  getAllRoutes: function (this: Record<string, { path?: string }>) {
-    return Object.values(this).filter((route) => typeof route === 'object' && route.path);
+    element: <Home />, //TODO
   },
 };
+
+const getAllRoutesInternal = (routes: Record<string, RouteType>) => {
+  return Object.values(routes).filter((route) => typeof route === 'object' && route.path);
+};
+
+export const servicePage = (serviceName: string): string => `/search/${serviceName}`;
+export const getAllRoutes = () => getAllRoutesInternal(ROUTES);

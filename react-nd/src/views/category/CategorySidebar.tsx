@@ -1,9 +1,14 @@
 import { Box, Heading, Icon, VStack, Link, Text } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
-import { services } from '@/consts/Services';
-import { ROUTES } from '@/consts/Routes';
+import { services } from '@/consts/services';
+import { ROUTES, servicePage } from '@/consts/Routes';
+import { ServiceType } from '@/type/serviceType';
 
-export const CategorySidebar = ({ service }) => {
+type CategorySidebarProps = {
+  service: ServiceType;
+};
+
+export const CategorySidebar = ({ service }: CategorySidebarProps) => {
   return (
     <Box
       as="nav"
@@ -21,7 +26,7 @@ export const CategorySidebar = ({ service }) => {
         {services.map((serviceSide) => (
           <Link
             as={RouterLink}
-            to={ROUTES.servicePage(serviceSide.name)}
+            to={servicePage(serviceSide.name)}
             key={serviceSide.name}
             _hover={{ textDecoration: 'none', bg: 'gray.100' }}
             borderRadius="md"

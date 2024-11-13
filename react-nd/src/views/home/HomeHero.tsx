@@ -2,13 +2,12 @@ import { Container, Heading, Stack, Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { services } from '@/consts/services';
 import { SearchBar } from '@/views/home';
-import { ServiceCard } from '@/components/service/ServiceCard';
-import { ServiceType } from '@/type/serviceType';
+import { SearchCategoryFn } from '@/views/home/types';
 
 export const HomeHero = () => {
   const navigate = useNavigate();
 
-  const handleSearch = (query) => {
+  const handleSearch: SearchCategoryFn = (query) => {
     const service = services.find((service) => service.name.includes(query)) || { name: query };
     navigate(`/search/${service.name}`);
   };

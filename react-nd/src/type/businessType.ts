@@ -3,6 +3,4 @@ export type BusinessType = {
   logo: string;
 };
 
-export type BusinessesType = {
-  [category: string]: BusinessType[];
-};
+export type BusinessesType = BusinessType[] | null;

@@ -1,6 +1,6 @@
 import { BusinessesType } from '@/type/businessType';
 
-export const businesses: BusinessesType = {
+export const businesses: Record<string, BusinessesType> = {
   cleaning: [
     { name: 'Sparkling Clean', logo: '/images/sparkling-clean-logo.jpg' },
     { name: 'Shine & Polish', logo: '/images/pink.jpg' },

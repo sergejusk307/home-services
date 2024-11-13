@@ -20,7 +20,7 @@ export const Category = () => {
     return <ErrorPage />;
   }
 
-  const businessList: BusinessesType = businesses[category] || {};
+  const businessList = businesses[service.name];
 
   return (
     <Flex>

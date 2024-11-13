@@ -3,10 +3,17 @@ import { Button, Icon, Input, Stack } from '@chakra-ui/react';
 
 import { useState } from 'react';
 
-export const SearchBar = ({ onSearch }) => {
+import { SearchCategoryFn } from '@/views/home/types';
+
+export interface SearchBarProps {
+  onSearch: SearchCategoryFn;
+}
+
+export const SearchBar = ({ onSearch }: SearchBarProps) => {
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleInputChange = ({ target: { value } }) => setSearchQuery(value);
+  const handleInputChange = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) =>
+    setSearchQuery(value);
 
   const handleSearch = () => onSearch(searchQuery);
 

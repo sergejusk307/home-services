@@ -28,7 +28,7 @@ export const CategoryMain = ({ service, businessList }: CategoryMainProps) => {
 
         <Box p={8}>
           <Flex wrap="wrap" gap={6}>
-            {businessList[service.name].map((business: BusinessType) => (
+            {businessList.map((business) => (
               <BusinessCard
                 key={business.name}
                 name={business.name}
