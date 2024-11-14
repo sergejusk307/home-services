@@ -1,6 +1,7 @@
 import bookingService from '#api/booking/services/bookingService.js';
+import { ApiResponseType } from '#api/type';
 
-const getBookingsByUserEmail = async (req, res, next) => {
+const getBookingsByUserEmail: ApiResponseType = async (req, res, next) => {
   try {
     const { email } = req.params;
     const result = await bookingService.getBookingsByUserEmail(email);
@@ -15,7 +16,7 @@ const getBookingsByUserEmail = async (req, res, next) => {
   }
 };
 
-const createBooking = async (req, res, next) => {
+const createBooking: ApiResponseType = async (req, res, next) => {
   try {
     const bookingData = req.body;
     const result = await bookingService.createBooking(bookingData);
@@ -30,7 +31,7 @@ const createBooking = async (req, res, next) => {
   }
 };
 
-const deleteBooking = async (req, res, next) => {
+const deleteBooking: ApiResponseType = async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await bookingService.deleteBooking(id);

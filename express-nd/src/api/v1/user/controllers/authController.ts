@@ -1,6 +1,7 @@
 import authService from '#api/user/services/authService.js';
+import { ApiResponseType } from '#api/type';
 
-const loginUser = async (req, res, next) => {
+const loginUser: ApiResponseType = async (req, res, next) => {
   const userData = req.body;
 
   try {
@@ -16,7 +17,7 @@ const loginUser = async (req, res, next) => {
   }
 };
 
-const registerUser = async (req, res, next) => {
+const registerUser: ApiResponseType = async (req, res, next) => {
   const userData = req.body;
 
   try {

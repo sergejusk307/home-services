@@ -1,4 +1,5 @@
 import { HTTP_RESPONSE_CODE } from '#const/global.js';
+import { ApiResponseType } from '#src/api/v1/type';
 
 const responseFormat = (req, res, next) => {
   res.success = (data) => {

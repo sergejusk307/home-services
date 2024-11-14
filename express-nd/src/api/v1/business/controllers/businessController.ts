@@ -1,4 +1,5 @@
 import businessService from '#api/business/services/businessService.js';
+import { ApiResponseType } from '#api/type';
 
 const getAllBusinesses = async (req, res, next) => {
   try {
@@ -14,7 +15,7 @@ const getAllBusinesses = async (req, res, next) => {
   }
 };
 
-const getBusinessesByCategory = async (req, res, next) => {
+const getBusinessesByCategory: ApiResponseType = async (req, res, next) => {
   try {
     const { category } = req.params;
 
@@ -30,7 +31,7 @@ const getBusinessesByCategory = async (req, res, next) => {
   }
 };
 
-const getBusinessById = async (req, res, next) => {
+const getBusinessById: ApiResponseType = async (req, res, next) => {
   try {
     const { id: businessId } = req.params;
 
@@ -46,7 +47,7 @@ const getBusinessById = async (req, res, next) => {
   }
 };
 
-const createBusiness = async (req, res, next) => {
+const createBusiness: ApiResponseType = async (req, res, next) => {
   try {
     const businessData = req.body;
 
@@ -62,7 +63,7 @@ const createBusiness = async (req, res, next) => {
   }
 };
 
-const updateBusiness = async (req, res, next) => {
+const updateBusiness: ApiResponseType = async (req, res, next) => {
   try {
     const { id: businessId } = req.params;
     const body = req.body;
@@ -79,7 +80,7 @@ const updateBusiness = async (req, res, next) => {
   }
 };
 
-const getBookingsByBusinessAndDate = async (req, res, next) => {
+const getBookingsByBusinessAndDate: ApiResponseType = async (req, res, next) => {
   try {
     const { businessId, date } = req.params;
 

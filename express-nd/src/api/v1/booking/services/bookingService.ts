@@ -4,8 +4,11 @@ import userService from '#api/user/services/userService.js';
 
 import ServiceError from '#api/util/ServiceError.js';
 
-const getBookingById = async (id) => {
+import { ServiceResponse } from '#api/type/serviceResponse';
+
+const getBookingById = async (id: string): Promise<ServiceResponse<typeof BookingModel>> => {
   const booking = await BookingModel.findById(id);
+
   return { data: booking };
 };
 

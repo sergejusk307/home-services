@@ -1,6 +1,7 @@
 import categoryService from '#api/categories/services/categoryService.js';
+import { ApiResponseType } from '#api/type';
 
-const getCategories = async (req, res, next) => {
+const getCategories: ApiResponseType = async (req, res, next) => {
   try {
     const result = await categoryService.getCategories();
 
@@ -14,7 +15,7 @@ const getCategories = async (req, res, next) => {
   }
 };
 
-const createCategory = async (req, res, next) => {
+const createCategory: ApiResponseType = async (req, res, next) => {
   try {
     const result = await categoryService.createCategory(req.body);
 
