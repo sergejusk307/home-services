@@ -2,7 +2,7 @@ import { BusinessCard } from '@/views/category';
 import { Box, Flex, Heading, Icon, Stack } from '@chakra-ui/react';
 
 import { ServiceType } from '@/type/serviceType';
-import { BusinessType, BusinessesType } from '@/type/businessType';
+import { BusinessesType } from '@/type/businessType';
 
 type CategoryMainProps = {
   service: ServiceType;
