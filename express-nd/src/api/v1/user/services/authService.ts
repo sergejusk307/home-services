@@ -2,17 +2,23 @@ import bcrypt from 'bcryptjs';
 
 import userService from '#api/user/services/userService.js';
 import ServiceError from '#api/util/ServiceError.js';
+import { isErrorResponse } from '#api/util/typeGuards';
 import generateToken from '#api/user/util/generateToken.js';
+import { IUser } from '#api/models/userModel';
 
-const register = async (userData) => {
+import { ServiceResponseType } from '#api/type/serviceResponse';
+
+const register = async (userData: IUser): ServiceResponseType<{}> => {
   const result = await userService.createUser(userData);
 
-  if (result.error) return result;
+  if (isErrorResponse(result)) {
+    return result;
+  }
 
-  return {};
+  return { data: {} };
 };
 
-const login = async (userData) => {
+const login = async (userData: IUser): ServiceResponseType<IUser> => {
   const { email, password } = userData;
 
   if (!email || !password) {
@@ -21,7 +27,7 @@ const login = async (userData) => {
 
   const result = await userService.getUserByEmail(email);
 
-  if (result.error) {
+  if (isErrorResponse(result)) {
     return result;
   }
 

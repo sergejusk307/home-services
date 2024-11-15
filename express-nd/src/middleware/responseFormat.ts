@@ -1,7 +1,7 @@
 import { HTTP_RESPONSE_CODE } from '#const/global.js';
 import { ApiResponseType } from '#src/api/v1/type';
 
-const responseFormat = (req, res, next) => {
+const responseFormat: ApiResponseType = async (req, res, next) => {
   res.success = (data) => {
     res.status(HTTP_RESPONSE_CODE.OK).json({
       data,

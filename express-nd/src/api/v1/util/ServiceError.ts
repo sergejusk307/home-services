@@ -1,7 +1,14 @@
 import { HTTP_RESPONSE_CODE } from '#src/const/global.js';
 
-class ServiceError extends Error {
-  constructor(statusCode, message) {
+export interface IServiceError extends Error {
+  statusCode: number;
+  message: string;
+}
+
+class ServiceError extends Error implements IServiceError {
+  public statusCode: number;
+
+  constructor(statusCode: number, message: string) {
     super(message);
     this.statusCode = statusCode;
   }

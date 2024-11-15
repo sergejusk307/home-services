@@ -10,6 +10,7 @@
     "moduleResolution": "node",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
     "paths": {
       "#src/*": ["src/*"],
       "#api/*": ["src/api/v1/*"],

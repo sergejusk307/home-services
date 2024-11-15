@@ -1,8 +1,9 @@
 import jwt from 'jsonwebtoken';
 
+import { ApiResponseType } from '#api/type';
 import ServiceError from '#api/util/ServiceError.js';
 
-const authMiddleware = (req, res, next) => {
+const authMiddleware: ApiResponseType = async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -11,6 +12,11 @@ const authMiddleware = (req, res, next) => {
 
   try {
     const token = authHeader.split(' ')[1];
+
+    if (!process.env.JWT_SECRET) {
+      throw new Error('JWT_SECRET environment variable is not set');
+    }
+
     const payload = jwt.verify(token, process.env.JWT_SECRET);
 
     req.currentUser = payload;

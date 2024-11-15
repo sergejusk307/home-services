@@ -1,6 +1,9 @@
 import { HTTP_RESPONSE_CODE } from '#const/global.js';
+import { IServiceError } from '#src/api/v1/util/ServiceError';
 
-const errorHandler = (err, req, res, next) => {
+import { NextFunction, Request, Response } from 'express';
+
+const errorHandler = (err: IServiceError, req: Request, res: Response, next: NextFunction) => {
   const statusCode = err.statusCode || HTTP_RESPONSE_CODE.INTERNAL_SERVER_ERROR;
   const message = err.message || 'Internal Server Error';
 

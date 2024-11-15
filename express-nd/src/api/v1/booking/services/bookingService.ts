@@ -1,21 +1,21 @@
-import BookingModel from '#api/models/bookingModel.js';
+import { IBooking, BookingModel } from '#api/models/bookingModel.js';
 import businessService from '#api/business/services/businessService.js';
 import userService from '#api/user/services/userService.js';
 
 import ServiceError from '#api/util/ServiceError.js';
+import { ServiceResponseType } from '#api/type/serviceResponse';
+import { isErrorResponse } from '#api/util/typeGuards';
 
-import { ServiceResponse } from '#api/type/serviceResponse';
-
-const getBookingById = async (id: string): Promise<ServiceResponse<typeof BookingModel>> => {
+const getBookingById = async (id: string): ServiceResponseType<IBooking> => {
   const booking = await BookingModel.findById(id);
 
   return { data: booking };
 };
 
-const getBookingsByUserEmail = async (email) => {
+const getBookingsByUserEmail = async (email: string): ServiceResponseType<IBooking[]> => {
   const result = await userService.getUserByEmail(email);
 
-  if (result.error) {
+  if (isErrorResponse(result)) {
     return result;
   }
 
@@ -28,10 +28,10 @@ const getBookingsByUserEmail = async (email) => {
   return { data: bookings };
 };
 
-const createBooking = async (bookingData) => {
+const createBooking = async (bookingData: IBooking): ServiceResponseType<IBooking> => {
   const result = await businessService.getBusinessById(bookingData.businessId);
 
-  if (result.error) {
+  if (isErrorResponse(result)) {
     return result;
   }
 
@@ -40,7 +40,7 @@ const createBooking = async (bookingData) => {
   }
 
   const resultUser = await userService.getUserByEmail(bookingData.userEmail);
-  if (resultUser.error) {
+  if (isErrorResponse(resultUser)) {
     return resultUser;
   }
 
@@ -58,10 +58,10 @@ const createBooking = async (bookingData) => {
   return { data: savedBooking };
 };
 
-const deleteBooking = async (id) => {
+const deleteBooking = async (id: string): ServiceResponseType<IBooking> => {
   const result = await getBookingById(id);
 
-  if (result.error) {
+  if (isErrorResponse(result)) {
     return result;
   }
 

@@ -1,5 +1,6 @@
 import authService from '#api/user/services/authService.js';
 import { ApiResponseType } from '#api/type';
+import { isErrorResponse } from '#api/util/typeGuards';
 
 const loginUser: ApiResponseType = async (req, res, next) => {
   const userData = req.body;
@@ -7,7 +8,7 @@ const loginUser: ApiResponseType = async (req, res, next) => {
   try {
     const result = await authService.login(userData);
 
-    if (result.error) {
+    if (isErrorResponse(result)) {
       return res.serviceError(result.error);
     }
 
@@ -22,11 +23,12 @@ const registerUser: ApiResponseType = async (req, res, next) => {
 
   try {
     const result = await authService.register(userData);
-    if (result.error) {
+
+    if (isErrorResponse(result)) {
       return res.serviceError(result.error);
     }
 
-    return res.created();
+    return res.created({});
   } catch (error) {
     next(error);
   }

@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { RequestHandler, Request, Response, NextFunction } from 'express';
 import { IServiceError } from '#api/type/serviceError';
 
 export interface IApiResponse extends Response {
@@ -10,3 +10,4 @@ export interface IApiResponse extends Response {
 }
 
 export type ApiResponseType = (req: Request, res: IApiResponse, next: NextFunction) => Promise<void>;
+//export type ApiResponseType = RequestHandler<Request, IApiResponse>;

@@ -1,6 +1,8 @@
-const baseSchema = (schema, excludeFields = []) => {
+import { Schema } from 'mongoose';
+
+const baseSchema = (schema: Schema, excludeFields: string[] = []): void => {
   schema.set('toJSON', {
-    transform: (document, returnedObject) => {
+    transform: (document: any, returnedObject: any) => {
       returnedObject.id = document._id.toString();
       delete returnedObject._id;
       delete returnedObject.__v;

@@ -1,13 +1,11 @@
 import { IServiceError } from '#api/type/serviceError';
 
-// Type for successful responses
-interface SuccessResponse<T> {
+export interface ISuccessResponse<T> {
   data: T | null;
 }
 
-// Type for error responses
-interface ErrorResponse {
+export interface IErrorResponse {
   error: IServiceError;
 }
 
-export type ServiceResponse<T> = SuccessResponse<T> | ErrorResponse;
+export type ServiceResponseType<T> = Promise<ISuccessResponse<T> | IErrorResponse>;

@@ -1,12 +1,13 @@
 import bookingService from '#api/booking/services/bookingService.js';
 import { ApiResponseType } from '#api/type';
+import { isErrorResponse } from '#api/util/typeGuards';
 
 const getBookingsByUserEmail: ApiResponseType = async (req, res, next) => {
   try {
     const { email } = req.params;
     const result = await bookingService.getBookingsByUserEmail(email);
 
-    if (result.error) {
+    if (isErrorResponse(result)) {
       return res.serviceError(result.error);
     }
 
@@ -21,7 +22,7 @@ const createBooking: ApiResponseType = async (req, res, next) => {
     const bookingData = req.body;
     const result = await bookingService.createBooking(bookingData);
 
-    if (result.error) {
+    if (isErrorResponse(result)) {
       return res.serviceError(result.error);
     }
 
@@ -36,7 +37,7 @@ const deleteBooking: ApiResponseType = async (req, res, next) => {
     const { id } = req.params;
     const result = await bookingService.deleteBooking(id);
 
-    if (result.error) {
+    if (isErrorResponse(result)) {
       return res.serviceError(result.error);
     }
 

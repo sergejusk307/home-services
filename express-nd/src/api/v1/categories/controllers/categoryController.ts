@@ -1,11 +1,12 @@
 import categoryService from '#api/categories/services/categoryService.js';
 import { ApiResponseType } from '#api/type';
+import { isErrorResponse } from '#api/util/typeGuards';
 
 const getCategories: ApiResponseType = async (req, res, next) => {
   try {
     const result = await categoryService.getCategories();
 
-    if (result.error) {
+    if (isErrorResponse(result)) {
       return res.serviceError(result.error);
     }
 
@@ -19,7 +20,7 @@ const createCategory: ApiResponseType = async (req, res, next) => {
   try {
     const result = await categoryService.createCategory(req.body);
 
-    if (result.error) {
+    if (isErrorResponse(result)) {
       return res.serviceError(result.error);
     }
 

@@ -1,15 +1,19 @@
-import UserModel from '#api/models/UserModel.js';
+import { IUser, UserModel } from '#api/models/userModel';
 import ServiceError from '#api/util/ServiceError.js';
 
-const getUserByEmail = async (email) => {
+import { ServiceResponseType } from '#api/type/serviceResponse';
+import { isSuccessResponse } from '#api/util/typeGuards';
+
+// TODO is it ok access property like this
+const getUserByEmail = async (email: IUser['email']): ServiceResponseType<IUser> => {
   const user = await UserModel.findOne({ email });
   return { data: user };
 };
 
-const createUser = async (userData) => {
+const createUser = async (userData: IUser): ServiceResponseType<IUser> => {
   const result = await getUserByEmail(userData.email);
 
-  if (result.data) {
+  if (isSuccessResponse(result)) {
     return ServiceError.notFound('User already exists');
   }
 
@@ -18,7 +22,7 @@ const createUser = async (userData) => {
     return ServiceError.internalError('Error saving User');
   }
 
-  return {};
+  return { data: newUser };
 };
 
 export default {

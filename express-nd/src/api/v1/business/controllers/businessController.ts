@@ -1,11 +1,13 @@
+import mongoose from 'mongoose';
 import businessService from '#api/business/services/businessService.js';
 import { ApiResponseType } from '#api/type';
+import { isErrorResponse } from '#api/util/typeGuards';
 
-const getAllBusinesses = async (req, res, next) => {
+const getAllBusinesses: ApiResponseType = async (req, res, next) => {
   try {
     const result = await businessService.getAllBusinesses();
 
-    if (result.error) {
+    if (isErrorResponse(result)) {
       return res.serviceError(result.error);
     }
 
@@ -17,11 +19,11 @@ const getAllBusinesses = async (req, res, next) => {
 
 const getBusinessesByCategory: ApiResponseType = async (req, res, next) => {
   try {
-    const { category } = req.params;
+    const categoryId = new mongoose.Types.ObjectId(req.params.category);
 
-    const result = await businessService.getBusinessesByCategory(category);
+    const result = await businessService.getBusinessesByCategory(categoryId);
 
-    if (result.error) {
+    if (isErrorResponse(result)) {
       return res.serviceError(result.error);
     }
 
@@ -33,11 +35,11 @@ const getBusinessesByCategory: ApiResponseType = async (req, res, next) => {
 
 const getBusinessById: ApiResponseType = async (req, res, next) => {
   try {
-    const { id: businessId } = req.params;
+    const businessId = new mongoose.Types.ObjectId(req.params.id);
 
     const result = await businessService.getBusinessById(businessId);
 
-    if (result.error) {
+    if (isErrorResponse(result)) {
       return res.serviceError(result.error);
     }
 
@@ -53,7 +55,7 @@ const createBusiness: ApiResponseType = async (req, res, next) => {
 
     const result = await businessService.createBusiness(businessData);
 
-    if (result.error) {
+    if (isErrorResponse(result)) {
       return res.serviceError(result.error);
     }
 
@@ -65,12 +67,13 @@ const createBusiness: ApiResponseType = async (req, res, next) => {
 
 const updateBusiness: ApiResponseType = async (req, res, next) => {
   try {
-    const { id: businessId } = req.params;
+    const businessId = new mongoose.Types.ObjectId(req.params.id);
+
     const body = req.body;
 
     const result = await businessService.updateBusiness(businessId, body);
 
-    if (result.error) {
+    if (isErrorResponse(result)) {
       return res.serviceError(result.error);
     }
 
@@ -82,11 +85,13 @@ const updateBusiness: ApiResponseType = async (req, res, next) => {
 
 const getBookingsByBusinessAndDate: ApiResponseType = async (req, res, next) => {
   try {
-    const { businessId, date } = req.params;
+    const businessId = new mongoose.Types.ObjectId(req.params.id);
+
+    const { date } = req.params;
 
     const result = await businessService.getBookingsByBusinessAndDate(businessId, date);
 
-    if (result.error) {
+    if (isErrorResponse(result)) {
       return res.serviceError(result.error);
     }
 

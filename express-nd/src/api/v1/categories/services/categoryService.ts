@@ -1,8 +1,9 @@
-import CategoryModel from '#api/models/categoryModel.js';
+import { ICategory, CategoryModel } from '#api/models/categoryModel.js';
 
 import ServiceError from '#api/util/ServiceError.js';
+import { ServiceResponseType } from '#api/type/serviceResponse';
 
-const getCategoryById = async (id) => {
+const getCategoryById = async (id: ICategory['_id']): ServiceResponseType<ICategory> => {
   const category = await CategoryModel.findById(id);
 
   if (!category) {
@@ -12,13 +13,13 @@ const getCategoryById = async (id) => {
   return { data: category };
 };
 
-const getCategories = async () => {
+const getCategories = async (): ServiceResponseType<ICategory[]> => {
   const categories = await CategoryModel.find({});
 
   return { data: categories };
 };
 
-const createCategory = async (data) => {
+const createCategory = async (data: ICategory): ServiceResponseType<ICategory> => {
   const { name, description, image: providedImage } = data;
 
   const image =

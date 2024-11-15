@@ -1,12 +1,15 @@
-import BusinessModel from '#api/models/businessModel.js';
-import BookingModel from '#api/models/bookingModel.js';
+import { IBusiness, BusinessModel } from '#api/models/businessModel.js';
+import { BookingModel, IBooking } from '#api/models/bookingModel.js';
 import categoryService from '#api/categories/services/categoryService.js';
 
 import ServiceError from '#api/util/ServiceError.js';
+import { ServiceResponseType } from '#api/type/serviceResponse';
+import { isErrorResponse } from '#api/util/typeGuards';
 
-const createBusiness = async (data) => {
+const createBusiness = async (data: IBusiness): ServiceResponseType<IBusiness> => {
   const result = await categoryService.getCategoryById(data.categoryId);
-  if (result.error) {
+
+  if (isErrorResponse(result)) {
     return result;
   }
 
@@ -24,13 +27,13 @@ const createBusiness = async (data) => {
   return { data: savedBusiness };
 };
 
-const getAllBusinesses = async () => {
+const getAllBusinesses = async (): ServiceResponseType<IBusiness[]> => {
   const businesses = await BusinessModel.find({});
 
   return { data: businesses };
 };
 
-const getBusinessById = async (id) => {
+const getBusinessById = async (id: IBusiness['_id']): ServiceResponseType<IBusiness> => {
   const business = await BusinessModel.findById(id);
 
   if (!business) {
@@ -40,10 +43,10 @@ const getBusinessById = async (id) => {
   return { data: business };
 };
 
-const updateBusiness = async (id, updateData) => {
+const updateBusiness = async (id: IBusiness['_id'], updateData: IBusiness): ServiceResponseType<IBusiness> => {
   const resultBusiness = await getBusinessById(id);
 
-  if (resultBusiness.error) {
+  if (isErrorResponse(resultBusiness)) {
     return resultBusiness;
   }
 
@@ -52,7 +55,8 @@ const updateBusiness = async (id, updateData) => {
   }
 
   const resultCategory = await categoryService.getCategoryById(resultBusiness.data.categoryId);
-  if (resultCategory.error) {
+
+  if (isErrorResponse(resultCategory)) {
     return resultCategory;
   }
 
@@ -71,19 +75,22 @@ const updateBusiness = async (id, updateData) => {
   return { data: business };
 };
 
-const getBusinessesByCategory = async (categoryId) => {
+const getBusinessesByCategory = async (categoryId: IBusiness['categoryId']): ServiceResponseType<IBusiness[]> => {
   const businesses = await BusinessModel.find({ categoryId });
 
   return { data: businesses };
 };
 
-const getBookingsByBusinessAndDate = async (businessId, date) => {
+const getBookingsByBusinessAndDate = async (
+  businessId: IBusiness['_id'],
+  date: IBooking['date']
+): ServiceResponseType<IBooking[]> => {
   const bookings = await BookingModel.find({
     businessId,
     date,
   });
 
-  return bookings;
+  return { data: bookings };
 };
 
 export default {

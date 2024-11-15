@@ -3,7 +3,15 @@ import bcrypt from 'bcryptjs';
 
 import baseSchema from '#api/models/baseSchema.js';
 
-const userSchema = new mongoose.Schema(
+export interface IUser {
+  _id: mongoose.Types.ObjectId;
+  name: string;
+  age?: number;
+  email: string;
+  password: string;
+}
+
+const userSchema = new mongoose.Schema<IUser>(
   {
     name: { type: String, required: true },
     age: { type: Number },
@@ -25,6 +33,4 @@ userSchema.pre('save', async function (next) {
 
 baseSchema(userSchema, ['password']);
 
-const UserModel = mongoose.model('User', userSchema);
-
-export default UserModel;
+export const UserModel = mongoose.model('User', userSchema);
