@@ -1,12 +1,7 @@
-import {
-  Container,
-  Heading,
-  Stack,
-  Text
-} from '@chakra-ui/react';
+import { Container, Heading, Stack, Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import { services } from "@/consts/Services";
-import { SearchBar } from "@/views/home";
+import { services } from '@/consts/Services';
+import { SearchBar } from '@/views/home';
 
 export const HomeHero = () => {
   const navigate = useNavigate();
@@ -27,7 +22,8 @@ export const HomeHero = () => {
         <Heading
           fontWeight={600}
           fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
-          lineHeight={'110%'}>
+          lineHeight={'110%'}
+        >
           Find Home{' '}
           <Text as={'span'} color={'primary.500'}>
             Service/Repair{' '}
@@ -35,16 +31,12 @@ export const HomeHero = () => {
           <br />
           Near You
         </Heading>
-        <Text
-          color={'gray.500'}
-          maxW={'3xl'}
-          fontSize={{ base: 'l', sm: 'xl', md: '2xl' }}>
+        <Text color={'gray.500'} maxW={'3xl'} fontSize={{ base: 'l', sm: 'xl', md: '2xl' }}>
           Explore Best Home Service & Repair near you
         </Text>
 
         <SearchBar onSearch={handleSearch} />
-
       </Stack>
     </Container>
-  )
-}
+  );
+};

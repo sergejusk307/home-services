@@ -1,13 +1,19 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 
-import { Topbar } from "@/components/navbar/Topbar";
-import { Footer } from "@/components/footer/Footer";
+import { Topbar } from '@/components/navbar/Topbar';
+import { Footer } from '@/components/footer/Footer';
 
-const footerHeight = "2.5rem";
+const footerHeight = '2.5rem';
 
 export const DefaultLayout = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: `calc(100vh - ${footerHeight})` }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: `calc(100vh - ${footerHeight})`,
+      }}
+    >
       <header>
         <Topbar />
       </header>
@@ -20,5 +26,5 @@ export const DefaultLayout = () => {
         <Footer />
       </footer>
     </div>
-  )
-}
+  );
+};

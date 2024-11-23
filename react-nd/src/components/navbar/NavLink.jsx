@@ -1,11 +1,9 @@
 import { Box, Text } from '@chakra-ui/react';
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link as RouterLink } from 'react-router-dom';
 
 export const NavLink = (props) => {
   const { children } = props;
   const { route } = props;
-
-  const navigate = useNavigate();
 
   return (
     <Box
@@ -18,7 +16,7 @@ export const NavLink = (props) => {
       _hover={{
         textDecoration: 'none',
         bg: 'primary.500',
-        color: 'white'
+        color: 'white',
       }}
     >
       <Text fontSize="1.2rem" fontWeight="bold">
@@ -26,5 +24,5 @@ export const NavLink = (props) => {
       </Text>
       {children}
     </Box>
-  )
-}
+  );
+};

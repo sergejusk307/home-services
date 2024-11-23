@@ -2,6 +2,6 @@
 
 Install: `npm i`
 
-Start: `npm run dev`
+Start: `npm run client`
 
 Demo: `https://home-services-pearl.vercel.app/`

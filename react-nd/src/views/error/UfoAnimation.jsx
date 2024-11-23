@@ -1,5 +1,5 @@
-import { Box } from "@chakra-ui/react";
-import { keyframes } from "@emotion/react";
+import { Box } from '@chakra-ui/react';
+import { keyframes } from '@emotion/react';
 
 const shadowAnimation = keyframes`
   0%, 100% {
@@ -12,11 +12,7 @@ const shadowAnimation = keyframes`
 
 export const UfoAnimation = () => {
   return (
-    <Box
-      aria-label="404 animation"
-      maxW="48rem"
-      mx="auto"
-    >
+    <Box aria-label="404 animation" maxW="48rem" mx="auto">
       <svg id="i-fof" viewBox="0 0 520 450">
         <g id="i-fof-ship">
           <path
@@ -40,7 +36,8 @@ export const UfoAnimation = () => {
           as="g"
           id="i-fof-browser"
           animation={`${shadowAnimation} 4s infinite`}
-          transformOrigin="282px 410px">
+          transformOrigin="282px 410px"
+        >
           <rect
             id="i-fof-browser-canvas"
             x="179"
@@ -121,14 +118,7 @@ export const UfoAnimation = () => {
           animation={`${shadowAnimation} 4s infinite`}
           transformOrigin="282px 410px"
         />
-        <ellipse
-          id="i-fof-radar-top"
-          cx="260"
-          cy="106"
-          rx="64"
-          ry="6"
-          fill="hsl(170, 78%, 36%)"
-        />
+        <ellipse id="i-fof-radar-top" cx="260" cy="106" rx="64" ry="6" fill="hsl(170, 78%, 36%)" />
       </svg>
     </Box>
   );

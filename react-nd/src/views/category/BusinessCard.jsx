@@ -13,13 +13,13 @@ import {
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import { extractColors } from 'extract-colors';
-import { useLocalStorage } from "usehooks-ts";
+import { useLocalStorage } from 'usehooks-ts';
 
 export const BusinessCard = ({ name, logo, category }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [dominantColor, setDominantColor] = useState('#ffffff');
 
-  const [favorites, setFavorites] = useLocalStorage("favorites", []);
+  const [favorites, setFavorites] = useLocalStorage('favorites', []);
 
   useEffect(() => {
     setIsFavorite(favorites.includes(name));
@@ -42,14 +42,14 @@ export const BusinessCard = ({ name, logo, category }) => {
 
     setFavorites([...newFavorites]);
     setIsFavorite(true);
-  }
+  };
 
   const removeFavorite = () => {
     const newFavorites = new Set(favorites);
     newFavorites.delete(name);
     setFavorites([...newFavorites]);
     setIsFavorite(false);
-  }
+  };
 
   const toggleFavorite = isFavorite ? removeFavorite : addFavorite;
 
@@ -123,4 +123,4 @@ export const BusinessCard = ({ name, logo, category }) => {
       </Box>
     </Center>
   );
-}
+};

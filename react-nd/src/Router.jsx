@@ -1,13 +1,13 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from 'react-router-dom';
 
 import { DefaultLayout } from '@/layout/DefaultLayout';
-import { ErrorPage } from "@/views/error";
+import { ErrorPage } from '@/views/error';
 
-import { ROUTES } from "@/consts/Routes";
+import { ROUTES } from '@/consts/Routes';
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <DefaultLayout />,
     errorElement: <ErrorPage />,
     children: ROUTES.getAllRoutes().map((route) => ({

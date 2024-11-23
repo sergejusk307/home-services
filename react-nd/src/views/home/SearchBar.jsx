@@ -1,10 +1,5 @@
-import { SearchIcon } from "@chakra-ui/icons";
-import {
-  Button,
-  Icon,
-  Input,
-  Stack
-} from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
+import { Button, Icon, Input, Stack } from '@chakra-ui/react';
 
 import { useState } from 'react';
 
@@ -35,7 +30,8 @@ export const SearchBar = ({ onSearch }) => {
           size="lg"
           type="submit"
           bg={'primary.500'}
-          _hover={{ bg: 'primary.600' }}>
+          _hover={{ bg: 'primary.600' }}
+        >
           <Icon as={SearchIcon} />
         </Button>
       </Stack>
