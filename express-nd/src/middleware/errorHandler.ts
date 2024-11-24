@@ -1,5 +1,5 @@
 import { HTTP_RESPONSE_CODE } from '#const/global.js';
-import { IServiceError } from '#src/api/v1/util/ServiceError';
+import { IServiceError } from '#src/api/v1/util/serviceError';
 
 import { NextFunction, Request, Response } from 'express';
 

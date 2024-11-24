@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 
 import userService from '#api/user/services/userService.js';
-import ServiceError from '#api/util/ServiceError.js';
+import ServiceError from '#src/api/v1/util/serviceError.js';
 import { isErrorResponse } from '#api/util/typeGuards';
 import generateToken from '#api/user/util/generateToken.js';
 import { IUser } from '#api/models/userModel';

@@ -1,6 +1,19 @@
-export type BusinessType = {
+export type ServerBusiness = {
+  id: string;
   name: string;
-  logo: string;
+  categoryId: string;
+  logo?: string;
 };
 
-export type BusinessesType = BusinessType[] | null;
+export type BusinessType = {
+  id: string;
+  name: string;
+  icon?: string;
+  color?: string;
+};
+
+export const mapBusiness = (serverBusiness: ServerBusiness): BusinessType => ({
+  id: serverBusiness.id,
+  name: serverBusiness.name,
+  icon: serverBusiness.logo,
+});

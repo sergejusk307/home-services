@@ -1,6 +1,6 @@
 import { ICategory, CategoryModel } from '#api/models/categoryModel.js';
 
-import ServiceError from '#api/util/ServiceError.js';
+import ServiceError from '#src/api/v1/util/serviceError.js';
 import { ServiceResponseType } from '#api/type/serviceResponse';
 
 const getCategoryById = async (id: ICategory['_id']): ServiceResponseType<ICategory> => {

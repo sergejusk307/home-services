@@ -1,8 +1,16 @@
 import { Box, SimpleGrid } from '@chakra-ui/react';
-import { services } from '@/consts/services';
+import { ServiceType } from '@/type/serviceType';
 import { ServiceCard } from '@/components/service/ServiceCard';
+import { getCategories } from '@/api/ServicesApi';
+import React from 'react';
 
 export const CategoryList = () => {
+  const [categories, setCategories] = React.useState<ServiceType[]>([]);
+
+  React.useEffect(() => {
+    getCategories().then(setCategories);
+  }, []);
+
   return (
     <Box p={{ base: 4, md: 10 }}>
       <Box maxWidth="1200px" mx="auto">
@@ -19,8 +27,8 @@ export const CategoryList = () => {
             xl: 'repeat(6, 1fr)',
           }}
         >
-          {services.map((service, index) => (
-            <ServiceCard key={index} service={service} />
+          {categories.map((category) => (
+            <ServiceCard key={category.id} service={category} />
           ))}
         </SimpleGrid>
       </Box>

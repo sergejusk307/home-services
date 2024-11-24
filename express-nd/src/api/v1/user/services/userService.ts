@@ -1,5 +1,5 @@
 import { IUser, UserModel } from '#api/models/userModel';
-import ServiceError from '#api/util/ServiceError.js';
+import ServiceError from '#src/api/v1/util/serviceError.js';
 
 import { ServiceResponseType } from '#api/type/serviceResponse';
 import { isSuccessResponse } from '#api/util/typeGuards';

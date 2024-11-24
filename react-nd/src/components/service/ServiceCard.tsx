@@ -1,6 +1,11 @@
 import { Box, Heading } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { ServiceType } from '@/type/serviceType';
+import { library, IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
+library.add(fas);
 
 export const ServiceCard = ({ service }: { service: ServiceType }) => {
   const navigate = useNavigate();
@@ -28,7 +33,7 @@ export const ServiceCard = ({ service }: { service: ServiceType }) => {
       }}
       onClick={handleClick}
     >
-      <service.icon fontSize={48} color={service.color} width={10} height={10} />
+      {service.icon && <FontAwesomeIcon fontSize={48} color={service.color} icon={service.icon} />}
       <Heading textTransform="capitalize" size="md" mb={2}>
         {service.name}
       </Heading>

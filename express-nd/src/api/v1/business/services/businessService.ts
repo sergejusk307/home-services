@@ -2,7 +2,7 @@ import { IBusiness, BusinessModel } from '#api/models/businessModel.js';
 import { BookingModel, IBooking } from '#api/models/bookingModel.js';
 import categoryService from '#api/categories/services/categoryService.js';
 
-import ServiceError from '#api/util/ServiceError.js';
+import ServiceError from '#src/api/v1/util/serviceError.js';
 import { ServiceResponseType } from '#api/type/serviceResponse';
 import { isErrorResponse } from '#api/util/typeGuards';
 

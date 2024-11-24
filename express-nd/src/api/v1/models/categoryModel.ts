@@ -7,6 +7,7 @@ export interface ICategory {
   name: string;
   description?: string;
   image?: string;
+  color?: string;
 }
 
 const CategorySchema = new mongoose.Schema<ICategory>({
@@ -17,6 +18,7 @@ const CategorySchema = new mongoose.Schema<ICategory>({
   },
   description: String,
   image: String,
+  color: String,
 });
 
 baseSchema(CategorySchema);

@@ -1,13 +1,10 @@
 import express from 'express';
 import categoryController from '#src/api/v1/categories/controllers/categoryController.js';
 
-import authMiddleware from '#src/middleware/authMiddleware.js';
-
 const router = express.Router();
 
 router.get(
   '/',
-  authMiddleware,
   categoryController.getCategories
   /* #swagger.responses[200] = {
     description: "Successful Response",

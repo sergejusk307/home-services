@@ -362,7 +362,7 @@
                 "properties": {
                   "type": {
                     "type": "string",
-                    "example": "string"
+                    "example": "schemaobjectid"
                   }
                 }
               },

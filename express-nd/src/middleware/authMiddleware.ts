@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 import { ApiResponseType } from '#api/type';
-import ServiceError from '#api/util/ServiceError.js';
+import ServiceError from '#src/api/v1/util/serviceError.js';
 
 const authMiddleware: ApiResponseType = async (req, res, next) => {
   const authHeader = req.headers.authorization;
