@@ -16,6 +16,7 @@ export const ServiceCard = ({ service }: { service: ServiceType }) => {
 
   return (
     <Box
+      role="gridcell"
       p={5}
       width="160px"
       shadow="xs"
